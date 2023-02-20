@@ -46,6 +46,6 @@ function insertSketchfabViewer(selector, modelId, callback) {
   document.getElementsByTagName('head')[0].appendChild(sfViewerScript);
 
   sfViewerScript.onload = function () {
-    createSfWorkspace(selector, callback);
+    createSfWorkspace(selector, modelId, callback);
   };
 }
