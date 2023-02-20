@@ -1,4 +1,4 @@
-function createSfWorkspace(selector, callback)
+function createSfWorkspace(selector, modelId, callback)
 {
 
   // Get the div element by the selector
@@ -38,7 +38,7 @@ function createSfWorkspace(selector, callback)
 } );
 }
 
-function insertSketchfabViewer(selector, callback) {
+function insertSketchfabViewer(selector, modelId, callback) {
   const sfViewerScript = document.createElement('script');
   sfViewerScript.src = 'https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js';
   sfViewerScript.type = 'text/javascript';
