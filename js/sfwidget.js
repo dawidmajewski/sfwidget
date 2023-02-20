@@ -36,13 +36,13 @@ function createSfWorkspace(selector)
 }
 
 function insertSketchfabViewer(selector) {
-  const sfViewrScript = document.createElement('script');
-  sfViewrScript.src = 'https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js';
-  sfViewrScript.type = 'text/javascript';
+  const sfViewerScript = document.createElement('script');
+  sfViewerScript.src = 'https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js';
+  sfViewerScript.type = 'text/javascript';
   
-  document.getElementsByTagName('head')[0].appendChild(sfViewrScript);
+  document.getElementsByTagName('head')[0].appendChild(sfViewerScript);
 
-  script.onload = function () {
+  sfViewerScript.onload = function () {
     createSfWorkspace(selector);
   };
 }
