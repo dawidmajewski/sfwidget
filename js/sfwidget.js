@@ -1,4 +1,4 @@
-function createSfWorkspace(selector)
+function createSfWorkspace(selector, callback)
 {
 
   // Get the div element by the selector
@@ -14,18 +14,21 @@ function createSfWorkspace(selector)
   
   // Append the iframe element to the div element
   viewerDiv.appendChild(viewerIframe);
-  var uid = '4bb5d595e4474f68b0696badf51d221f';
 
   // By default, the latest version of the viewer API will be used.
   const client = new Sketchfab( viewerIframe );
-  client.init( uid, {
+  client.init( modelId, {
     success: function onSuccess( api ){
         api.start();
         api.addEventListener( 'viewerready', function() {
 
             // API is ready to use
             // Insert your code here
-            console.log( 'Viewer is ready' );
+          console.log( 'Viewer is ready' );
+
+          if (typeof callback === 'function') {
+              callback(api);
+          }
 
         } );
     },
@@ -35,7 +38,7 @@ function createSfWorkspace(selector)
 } );
 }
 
-function insertSketchfabViewer(selector) {
+function insertSketchfabViewer(selector, callback) {
   const sfViewerScript = document.createElement('script');
   sfViewerScript.src = 'https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js';
   sfViewerScript.type = 'text/javascript';
@@ -43,6 +46,6 @@ function insertSketchfabViewer(selector) {
   document.getElementsByTagName('head')[0].appendChild(sfViewerScript);
 
   sfViewerScript.onload = function () {
-    createSfWorkspace(selector);
+    createSfWorkspace(selector, callback);
   };
 }
